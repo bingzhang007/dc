@@ -1,0 +1,49 @@
+
+<div ng-include="'tpl/include/header.html'"></div>
+
+<ion-content class="has-header has-footer">
+  <!--<h1>菜品列表页面</h1>-->
+
+  <!-- 搜索框-->
+  <div class="list list-inset">
+    <div class="item item-input">
+      <input
+        ng-model="inputData.kw"
+        type="text"
+        placeholder="输入要搜索的菜品或者原材料名称"/>
+      <i class="icon ion-search" ></i>
+    </div>
+  </div>
+
+  <!-- 列表-->
+  <div class="list list-inset">
+    <a ui-sref="detail({id:dish.did})"
+       ng-repeat="dish in dishList"
+       class="item item-thumbnail-left item-text-wrap">
+      <img ng-src="img/{{dish.img_sm}}" alt=""/>
+      <h4>{{dish.name}}</h4>
+      <p>{{dish.material}}</p>
+      <p>{{dish.price | currency:'￥'}}</p>
+    </a>
+    <!--<button
+      ng-show="hasMore"
+      ng-click="loadMore()"
+      class="button button-block button-balanced">
+      加载更多
+    </button>-->
+    <ion-infinite-scroll
+      ng-if="hasMore"
+      immediate-check="false"
+      on-infinite="loadMore()">
+
+    </ion-infinite-scroll>
+    <p ng-hide="hasMore">没有更多数据可以加载了</p>
+  </div>
+
+
+  <!-- 按钮-->
+
+</ion-content>
+
+
+<!--<div ng-include="'tpl/include/footer.html'"></div>-->

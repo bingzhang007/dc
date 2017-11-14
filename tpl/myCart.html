@@ -1,0 +1,63 @@
+<ion-header-bar align-title="center">
+    <h1 class="title">购物车</h1>
+    <button class="button button-clear button-dark"
+            ng-click="funcToggleEdit()">{{editShowMsg}}
+    </button>
+</ion-header-bar>
+<!--
+ctid:"1"
+did:"1"
+dishCount:"1"
+img_sm:"p0281.jpg"
+name:"【酸甜开胃虾】"
+price:"36.00"-->
+<ion-content class="has-header has-footer">
+    <h1 class="text-center">我的购物车</h1>
+
+    <ion-list class="list list-inset">
+        <ion-item ng-repeat="dish in cart">
+            <div class="row row-center">
+                <div class="col col-33">
+                    <img class="img-responsive" ng-src="img/{{dish.img_sm}}" alt=""/>
+                </div>
+                <div class="col col-50" ng-hide="editEnable">
+                    <p>{{dish.name}}</p>
+                    <p style="display: inline-block;vertical-align: middle;color:red;">
+                        {{dish.price}}
+                    </p>
+                    <p style="display: inline-block;vertical-align: middle">
+                        ×{{dish.dishCount}}
+                    </p>
+                </div>
+                <div class="col col-50" ng-show="editEnable">
+                    <button style="vertical-align: middle;"
+                            ng-click="delete($index)"
+                            class="button ">-
+                    </button>
+                    <input style="width:15px;text-align:center;display:inline-block;vertical-align: middle;" type="text"
+                           ng-model="dish.dishCount"/>
+                    <button ng-click="add($index)"
+                            style="vertical-align: middle;"
+                            class="button ">+
+                    </button>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item  >
+            <div ng-show="hasDish" class="text-right ">
+                <p style="display: inline-block;vertical-align:middle">合计:{{sumAll()}}</p>
+                <button
+                        ng-click="jumpToOrder()"
+                        style="display: inline-block;vertical-align:middle"
+                        class="button button-small button-balanced">
+                    我要下单
+                </button>
+            </div>
+            <div ng-hide="hasDish" class="text-center">
+                <button class="button button-block button-balanced" ng-click="jump('main')">我要去买买买！</button>
+            </div>
+
+        </ion-item>
+    </ion-list>
+</ion-content>
+<!--<div ng-include="'tpl/include/footer.html'"></div>-->

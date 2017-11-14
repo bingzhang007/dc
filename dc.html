@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="kfl">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="css/ionic.css"/>
+    <link rel="stylesheet" href="css/kfl.css"/>
+    <script src="js/ionic.bundle.js"></script>
+    <script src="js/kfl.js"></script>
+    <title></title>
+</head>
+<body ng-controller="parentCtrl">
+
+<div ui-view></div>
+
+<ion-tabs class="tabs-icon-top">
+    <ion-tab title="主页"
+             on-select="funcSelect(0)"
+             icon-on="ion-ios-bell" icon-off="ion-ios-bell-outline">
+
+    </ion-tab>
+    <ion-tab title="订单中心" icon-on="ion-ios-videocam" icon-off="ion-ios-videocam-outline"
+             on-select="funcSelect(1)">
+
+    </ion-tab>
+    <ion-tab title="购物车" icon-on="ion-ios-flag" badge="data.totalNumInCount" badge-style="badge-assertive"
+             icon-off="ion-ios-flag-outline"
+             on-select="funcSelect(2)">
+
+    </ion-tab>
+    <ion-tab title="设置" icon-on="ion-ios-flag" icon-off="ion-ios-flag-outline"
+             on-select="funcSelect(3)">
+
+    </ion-tab>
+</ion-tabs>
+
+</body>
+</html>
